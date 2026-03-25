@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,8 +10,8 @@ const Contact = () => (
     <section className="py-20">
       <div className="container max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <h1 className="font-heading text-5xl md:text-6xl mb-4">Get In Touch</h1>
-          <p className="text-muted-foreground max-w-xl mx-auto">We'd love to hear from you. Reach out anytime.</p>
+          <h1 className="font-heading text-5xl md:text-6xl mb-4">Find Us Here</h1>
+          <p className="text-muted-foreground max-w-xl mx-auto">We'd love to meet you. Come visit us this Sunday!</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -19,26 +19,27 @@ const Contact = () => (
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
             <h2 className="font-heading text-3xl mb-6">Visit Us</h2>
             <div className="space-y-5 mb-10">
-              {[
-                { icon: MapPin, label: "Address", value: "123 Faith Avenue, City, State 12345" },
-                { icon: Phone, label: "Phone", value: "(555) 123-4567" },
-                { icon: Mail, label: "Email", value: "info@gracecommunity.org" },
-              ].map((item) => (
-                <div key={item.label} className="flex items-start gap-3">
-                  <item.icon className="h-5 w-5 text-accent mt-0.5" />
-                  <div>
-                    <p className="font-medium text-sm">{item.label}</p>
-                    <p className="text-muted-foreground text-sm">{item.value}</p>
-                  </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-accent mt-0.5" />
+                <div>
+                  <p className="font-medium text-sm">Location</p>
+                  <p className="text-muted-foreground text-sm">Gospel Baptist Church, Australia</p>
                 </div>
-              ))}
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="h-5 w-5 text-accent mt-0.5" />
+                <div>
+                  <p className="font-medium text-sm">Email</p>
+                  <p className="text-muted-foreground text-sm">info@gospelbaptist.org.au</p>
+                </div>
+              </div>
             </div>
 
             <h2 className="font-heading text-3xl mb-6">Service Times</h2>
             <div className="space-y-4">
               {[
-                { day: "Sunday", times: "9:00 AM & 11:00 AM" },
-                { day: "Wednesday", times: "7:00 PM – Bible Study" },
+                { day: "Sunday", times: "10:00 AM – Worship Service" },
+                { day: "Wednesday", times: "7:00 PM – Prayer Meeting" },
               ].map((s) => (
                 <div key={s.day} className="flex items-center gap-3">
                   <Clock className="h-5 w-5 text-accent" />
@@ -48,6 +49,19 @@ const Contact = () => (
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Map embed placeholder */}
+            <div className="mt-8 rounded-xl overflow-hidden border aspect-video">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533916.5631095124!2d148.0!3d-33.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sAustralia!5e0!3m2!1sen!2sau!4v1"
+                className="w-full h-full"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Gospel Baptist Church Location"
+              />
             </div>
           </motion.div>
 

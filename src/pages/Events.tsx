@@ -5,53 +5,52 @@ import { Badge } from "@/components/ui/badge";
 
 const events = [
   {
-    title: "Easter Sunday Celebration",
-    date: "April 5, 2026",
-    time: "9:00 AM & 11:00 AM",
-    location: "Main Sanctuary",
+    title: "Sunday Worship Service",
+    date: "Every Sunday",
+    time: "10:00 AM",
+    location: "Main Auditorium",
     category: "Worship",
-    description: "Celebrate the risen King with us! Special music, message, and activities for the whole family.",
+    description: "Join us for worship, prayer, and a message from God's Word. Everyone is welcome!",
   },
   {
-    title: "Women's Conference 2026",
-    date: "April 18–19, 2026",
-    time: "9:00 AM – 4:00 PM",
+    title: "Wednesday Prayer Meeting",
+    date: "Every Wednesday",
+    time: "7:00 PM",
+    location: "Main Auditorium",
+    category: "Prayer",
+    description: "Relying on God's Grace through prayer. Shared prayer needs and thanksgiving.",
+  },
+  {
+    title: "Women's Bible Study",
+    date: "Fortnightly",
+    time: "10:00 AM",
     location: "Fellowship Hall",
-    category: "Conference",
-    description: "A weekend of encouragement, worship, and fellowship for women of all ages.",
+    category: "Bible Study",
+    description: "Growing together in the Word of God. Encouragement, study material & prayer support.",
   },
   {
-    title: "Community Outreach Day",
-    date: "April 25, 2026",
-    time: "8:00 AM – 1:00 PM",
-    location: "Various Locations",
-    category: "Outreach",
-    description: "Serve our community through food drives, neighborhood cleanups, and free family resources.",
+    title: "Men's Bible Study",
+    date: "Fortnightly",
+    time: "7:00 PM",
+    location: "Fellowship Hall",
+    category: "Bible Study",
+    description: "Stronger together through the Word of God. Focused study & prayer support.",
   },
   {
-    title: "Youth Summer Kickoff",
-    date: "May 2, 2026",
-    time: "6:00 PM – 9:00 PM",
-    location: "Youth Center",
-    category: "Youth",
-    description: "Games, worship, and fun as we launch into an exciting summer of activities for teens.",
-  },
-  {
-    title: "Marriage Enrichment Workshop",
-    date: "May 16, 2026",
-    time: "10:00 AM – 2:00 PM",
-    location: "Room 201",
-    category: "Workshop",
-    description: "Strengthen your marriage with practical tools and biblical wisdom for couples.",
+    title: "KidzZone",
+    date: "Every Sunday",
+    time: "10:00 AM",
+    location: "Kids Room",
+    category: "Kids",
+    description: "Growing with the Word of God. Activities, discipleship material & parents lounge.",
   },
 ];
 
 const categoryColors: Record<string, string> = {
   Worship: "bg-secondary text-secondary-foreground",
-  Conference: "bg-primary text-primary-foreground",
-  Outreach: "bg-accent text-accent-foreground",
-  Youth: "bg-muted text-foreground",
-  Workshop: "bg-card text-card-foreground border",
+  Prayer: "bg-primary text-primary-foreground",
+  "Bible Study": "bg-accent text-accent-foreground",
+  Kids: "bg-muted text-foreground",
 };
 
 const Events = () => (
@@ -59,8 +58,8 @@ const Events = () => (
     <section className="py-20">
       <div className="container max-w-4xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <h1 className="font-heading text-5xl md:text-6xl mb-4">Upcoming Events</h1>
-          <p className="text-muted-foreground max-w-xl mx-auto">Stay connected with what's happening at Grace Community.</p>
+          <h1 className="font-heading text-5xl md:text-6xl mb-4">Calendar of Events</h1>
+          <p className="text-muted-foreground max-w-xl mx-auto">Stay connected with what's happening at Gospel Baptist Church.</p>
         </motion.div>
 
         <div className="space-y-6">
@@ -75,9 +74,7 @@ const Events = () => (
             >
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <h3 className="font-heading text-2xl">{event.title}</h3>
-                <Badge className={categoryColors[event.category] || ""}>
-                  {event.category}
-                </Badge>
+                <Badge className={categoryColors[event.category] || ""}>{event.category}</Badge>
               </div>
               <p className="text-muted-foreground text-sm mb-4">{event.description}</p>
               <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
