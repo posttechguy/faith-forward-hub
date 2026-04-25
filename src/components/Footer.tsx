@@ -8,7 +8,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-10">
         <div>
           <img
-            src="/src/assets/gbc-logo-white.png"
+            src={logoWhite}
             alt="Gospel Baptist Church"
             className="h-20 w-auto mb-4"
           />
