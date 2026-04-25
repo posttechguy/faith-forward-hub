@@ -54,7 +54,7 @@ const Contact = () => (
             {/* Map embed placeholder */}
             <div className="mt-8 rounded-xl overflow-hidden border aspect-video">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533916.5631095124!2d148.0!3d-33.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sAustralia!5e0!3m2!1sen!2sau!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.0699999999997!2d115.7979292!3d-31.7775722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32ace09e72aac9%3A0x1bba07a9c29fd2d6!2sGospel%20Baptist%20Church!5e0!3m2!1sen!2sau!4v1"
                 className="w-full h-full"
                 style={{ border: 0 }}
                 allowFullScreen
