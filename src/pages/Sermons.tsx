@@ -163,7 +163,7 @@ const Sermons = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group block rounded-xl overflow-hidden border bg-card hover:shadow-lg transition-all"
+                className="group block rounded-xl overflow-hidden border bg-card hover:shadow-lg transition-all h-full flex flex-col"
               >
                 <div className="relative aspect-video bg-muted">
                   <img
