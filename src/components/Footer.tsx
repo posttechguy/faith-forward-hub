@@ -7,9 +7,9 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-10">
         <div>
           <img
-            src="https://gospelbaptist.org.au/images/logos/GBC-logo-transparent-400px.png"
+            src="/src/assets/gbc-logo-white.png"
             alt="Gospel Baptist Church"
-            className="h-16 w-auto mb-4"
+            className="h-20 w-auto mb-4"
           />
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
             Where the Truth can be found. Discover the real meaning of the "Good News" of Jesus Christ.
