@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import logoWhite from "@/assets/gbc-logo-white.png";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
