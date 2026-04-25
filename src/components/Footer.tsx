@@ -6,7 +6,11 @@ const Footer = () => (
     <div className="container py-16">
       <div className="grid md:grid-cols-4 gap-10">
         <div>
-          <h3 className="font-heading text-2xl mb-4">Gospel Baptist Church</h3>
+          <img
+            src="https://gospelbaptist.org.au/images/logos/GBC-logo-transparent-400px.png"
+            alt="Gospel Baptist Church"
+            className="h-16 w-auto mb-4"
+          />
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
             Where the Truth can be found. Discover the real meaning of the "Good News" of Jesus Christ.
           </p>
