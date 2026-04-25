@@ -104,10 +104,11 @@ const Index = () => (
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
+              className="h-full"
             >
               <Link
                 to={item.link}
-                className="block p-8 rounded-xl bg-card hover:shadow-lg transition-all duration-300 group border text-center"
+                className="block p-8 rounded-xl bg-card hover:shadow-lg transition-all duration-300 group border text-center h-full"
               >
                 <item.icon className="h-10 w-10 text-accent mb-4 mx-auto" />
                 <h3 className="font-heading text-xl mb-2 text-card-foreground">{item.title}</h3>
