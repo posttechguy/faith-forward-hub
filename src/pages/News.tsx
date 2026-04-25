@@ -74,7 +74,7 @@ const News = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-xl border bg-card overflow-hidden hover:shadow-lg transition-all group cursor-pointer"
+              className="rounded-xl border bg-card overflow-hidden hover:shadow-lg transition-all group cursor-pointer h-full flex flex-col"
             >
               <div className="aspect-video overflow-hidden">
                 <img
