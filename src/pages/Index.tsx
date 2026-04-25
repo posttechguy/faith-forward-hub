@@ -140,12 +140,12 @@ const Index = () => (
             >
               <Link
                 to={item.link}
-                className="block p-8 rounded-xl bg-card hover:shadow-lg transition-all duration-300 group border h-full"
+                className="flex flex-col p-8 rounded-xl bg-card hover:shadow-lg transition-all duration-300 group border h-full"
               >
                 <item.icon className="h-10 w-10 text-accent mb-4" />
                 <h3 className="font-heading text-2xl mb-2 text-card-foreground">{item.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{item.desc}</p>
-                <span className="text-accent text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                <p className="text-muted-foreground text-sm mb-4 flex-grow">{item.desc}</p>
+                <span className="text-accent text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
                   Explore <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
