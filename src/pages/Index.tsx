@@ -60,7 +60,7 @@ const Index = () => (
           <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
             <Link to="/about">What We Believe</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-foreground hover:bg-primary-foreground/10 hover:text-foreground">
+          <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary hover:bg-primary-foreground/10 hover:text-primary-foreground">
             <Link to="/sermons">Recorded Sermons</Link>
           </Button>
         </motion.div>
