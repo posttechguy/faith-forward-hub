@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-      <div className="container flex items-center justify-between h-16">
+      <div className="container flex items-center justify-between h-28">
         <Link to="/" className="flex items-center">
           <img
             src="https://gospelbaptist.org.au/images/logos/GBC-logo-transparent-400px.png"
