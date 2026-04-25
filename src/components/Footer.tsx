@@ -63,11 +63,11 @@ const Footer = () => (
           <div className="space-y-3 text-sm text-primary-foreground/70">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-secondary" />
-              <span>Gospel Baptist Church, Australia</span>
+              <span>Gospel Baptist Church<br />3 Backshall Place, Wanneroo, WA, 6065</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-secondary" />
-              <span>info@gospelbaptist.org.au</span>
+              <span>pastor@gospelbaptist.org.au</span>
             </div>
           </div>
         </div>
