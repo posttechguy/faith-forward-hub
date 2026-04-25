@@ -23,14 +23,14 @@ const Contact = () => (
                 <MapPin className="h-5 w-5 text-accent mt-0.5" />
                 <div>
                   <p className="font-medium text-sm">Location</p>
-                  <p className="text-muted-foreground text-sm">Gospel Baptist Church, Australia</p>
+                  <p className="text-muted-foreground text-sm">Gospel Baptist Church<br />3 Backshall Place, Wanneroo, WA, 6065</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-accent mt-0.5" />
                 <div>
                   <p className="font-medium text-sm">Email</p>
-                  <p className="text-muted-foreground text-sm">info@gospelbaptist.org.au</p>
+                  <p className="text-muted-foreground text-sm">pastor@gospelbaptist.org.au</p>
                 </div>
               </div>
             </div>
