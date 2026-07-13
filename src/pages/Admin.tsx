@@ -54,13 +54,15 @@ const Admin = () => {
                   <CardDescription>Manage events (coming soon).</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="opacity-60">
-                <CardHeader>
-                  <FileText className="h-6 w-6 text-primary mb-2" />
-                  <CardTitle>Sermons</CardTitle>
-                  <CardDescription>Manage sermons (coming soon).</CardDescription>
-                </CardHeader>
-              </Card>
+              <Link to="/admin/sermons">
+                <Card className="hover:shadow-md transition-shadow h-full">
+                  <CardHeader>
+                    <FileText className="h-6 w-6 text-primary mb-2" />
+                    <CardTitle>Sermons</CardTitle>
+                    <CardDescription>Add, edit, and remove YouTube sermons.</CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
             </>
           )}
         </div>
