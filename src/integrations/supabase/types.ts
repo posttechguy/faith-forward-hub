@@ -44,6 +44,45 @@ export type Database = {
         }
         Relationships: []
       }
+      sermons: {
+        Row: {
+          category: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          sermon_date: string
+          speaker: string
+          title: string
+          updated_at: string
+          youtube_id: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          sermon_date?: string
+          speaker?: string
+          title: string
+          updated_at?: string
+          youtube_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          sermon_date?: string
+          speaker?: string
+          title?: string
+          updated_at?: string
+          youtube_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
