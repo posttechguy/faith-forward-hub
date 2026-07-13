@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import AdminProfile from "./pages/AdminProfile";
+import AdminSermons from "./pages/AdminSermons";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
             <Route path="/admin/profile" element={<ProtectedRoute><AdminProfile /></ProtectedRoute>} />
+            <Route path="/admin/sermons" element={<ProtectedRoute requireAdmin><AdminSermons /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
