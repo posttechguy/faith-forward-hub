@@ -219,7 +219,37 @@ const AdminSermons = () => {
             </div>
             <div>
               <Label htmlFor="youtube">YouTube URL or ID</Label>
-              <Input id="youtube" required placeholder="https://youtube.com/watch?v=..." value={form.youtube_id} onChange={(e) => setForm({ ...form, youtube_id: e.target.value })} />
+              <div className="flex gap-2">
+                <Input
+                  id="youtube"
+                  required
+                  placeholder="https://youtube.com/watch?v=..."
+                  value={form.youtube_id}
+                  onChange={(e) => setForm({ ...form, youtube_id: e.target.value })}
+                  onBlur={(e) => {
+                    const v = e.target.value.trim();
+                    if (v && v !== extractYouTubeId(v).slice(0, 0)) {
+                      const id = extractYouTubeId(v);
+                      if (/^[\w-]{11}$/.test(id)) syncMetadata(v);
+                    }
+                  }}
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => syncMetadata(form.youtube_id)}
+                  disabled={syncing || !form.youtube_id}
+                >
+                  {syncing ? "Syncing…" : "Sync"}
+                </Button>
+              </div>
+              {thumbPreview && (
+                <img
+                  src={thumbPreview}
+                  alt="Video thumbnail"
+                  className="mt-2 w-40 aspect-video object-cover rounded border"
+                />
+              )}
             </div>
             <div>
               <Label htmlFor="category">Category</Label>
