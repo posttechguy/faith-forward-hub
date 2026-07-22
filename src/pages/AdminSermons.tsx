@@ -66,11 +66,6 @@ const AdminSermons = () => {
     }
     setSyncing(true);
     try {
-      const { data, error } = await supabase.functions.invoke("youtube-metadata", {
-        method: "GET" as never,
-        // supabase-js doesn't forward query params on GET; call via fetch fallback
-      } as never);
-      // Fallback: direct fetch to the function URL with query string
       const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
       const anonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
       const res = await fetch(
@@ -82,13 +77,12 @@ const AdminSermons = () => {
       setForm((f) => ({
         ...f,
         youtube_id: id,
-        title: f.title || meta.title || f.title,
+        title: meta.title || f.title,
         speaker: meta.author && f.speaker === "Pastor" ? meta.author : f.speaker,
         sermon_date: meta.publishDate || f.sermon_date,
       }));
       setThumbPreview(meta.thumbnail);
       toast.success("Metadata synced from YouTube");
-      void data; void error;
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
