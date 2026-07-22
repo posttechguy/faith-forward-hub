@@ -106,6 +106,7 @@ const AdminSermons = () => {
   const openNew = () => {
     setEditingId(null);
     setForm(emptyForm);
+    setThumbPreview(null);
     setOpen(true);
   };
 
@@ -119,6 +120,7 @@ const AdminSermons = () => {
       category: s.category,
       description: s.description ?? "",
     });
+    setThumbPreview(`https://img.youtube.com/vi/${s.youtube_id}/hqdefault.jpg`);
     setOpen(true);
   };
 
