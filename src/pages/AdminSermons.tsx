@@ -55,6 +55,46 @@ const AdminSermons = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [thumbPreview, setThumbPreview] = useState<string | null>(null);
+
+  const syncMetadata = async (rawInput: string) => {
+    const id = extractYouTubeId(rawInput);
+    if (!/^[\w-]{11}$/.test(id)) {
+      toast.error("Enter a valid YouTube URL or 11-character video ID");
+      return;
+    }
+    setSyncing(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("youtube-metadata", {
+        method: "GET" as never,
+        // supabase-js doesn't forward query params on GET; call via fetch fallback
+      } as never);
+      // Fallback: direct fetch to the function URL with query string
+      const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
+      const anonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const res = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/youtube-metadata?id=${id}`,
+        { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } }
+      );
+      const meta = await res.json();
+      if (!res.ok) throw new Error(meta.error || "Failed to fetch metadata");
+      setForm((f) => ({
+        ...f,
+        youtube_id: id,
+        title: f.title || meta.title || f.title,
+        speaker: meta.author && f.speaker === "Pastor" ? meta.author : f.speaker,
+        sermon_date: meta.publishDate || f.sermon_date,
+      }));
+      setThumbPreview(meta.thumbnail);
+      toast.success("Metadata synced from YouTube");
+      void data; void error;
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const load = async () => {
     setLoading(true);
