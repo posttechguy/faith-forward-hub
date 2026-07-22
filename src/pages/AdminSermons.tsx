@@ -55,6 +55,40 @@ const AdminSermons = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [thumbPreview, setThumbPreview] = useState<string | null>(null);
+
+  const syncMetadata = async (rawInput: string) => {
+    const id = extractYouTubeId(rawInput);
+    if (!/^[\w-]{11}$/.test(id)) {
+      toast.error("Enter a valid YouTube URL or 11-character video ID");
+      return;
+    }
+    setSyncing(true);
+    try {
+      const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
+      const anonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const res = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/youtube-metadata?id=${id}`,
+        { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } }
+      );
+      const meta = await res.json();
+      if (!res.ok) throw new Error(meta.error || "Failed to fetch metadata");
+      setForm((f) => ({
+        ...f,
+        youtube_id: id,
+        title: meta.title || f.title,
+        speaker: meta.author && f.speaker === "Pastor" ? meta.author : f.speaker,
+        sermon_date: meta.publishDate || f.sermon_date,
+      }));
+      setThumbPreview(meta.thumbnail);
+      toast.success("Metadata synced from YouTube");
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const load = async () => {
     setLoading(true);
@@ -72,6 +106,7 @@ const AdminSermons = () => {
   const openNew = () => {
     setEditingId(null);
     setForm(emptyForm);
+    setThumbPreview(null);
     setOpen(true);
   };
 
@@ -85,6 +120,7 @@ const AdminSermons = () => {
       category: s.category,
       description: s.description ?? "",
     });
+    setThumbPreview(`https://img.youtube.com/vi/${s.youtube_id}/hqdefault.jpg`);
     setOpen(true);
   };
 
@@ -183,7 +219,37 @@ const AdminSermons = () => {
             </div>
             <div>
               <Label htmlFor="youtube">YouTube URL or ID</Label>
-              <Input id="youtube" required placeholder="https://youtube.com/watch?v=..." value={form.youtube_id} onChange={(e) => setForm({ ...form, youtube_id: e.target.value })} />
+              <div className="flex gap-2">
+                <Input
+                  id="youtube"
+                  required
+                  placeholder="https://youtube.com/watch?v=..."
+                  value={form.youtube_id}
+                  onChange={(e) => setForm({ ...form, youtube_id: e.target.value })}
+                  onBlur={(e) => {
+                    const v = e.target.value.trim();
+                    if (v && v !== extractYouTubeId(v).slice(0, 0)) {
+                      const id = extractYouTubeId(v);
+                      if (/^[\w-]{11}$/.test(id)) syncMetadata(v);
+                    }
+                  }}
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => syncMetadata(form.youtube_id)}
+                  disabled={syncing || !form.youtube_id}
+                >
+                  {syncing ? "Syncing…" : "Sync"}
+                </Button>
+              </div>
+              {thumbPreview && (
+                <img
+                  src={thumbPreview}
+                  alt="Video thumbnail"
+                  className="mt-2 w-40 aspect-video object-cover rounded border"
+                />
+              )}
             </div>
             <div>
               <Label htmlFor="category">Category</Label>
