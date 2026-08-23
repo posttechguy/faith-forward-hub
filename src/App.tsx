@@ -7,6 +7,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Leadership from "./pages/Leadership";
 import Sermons from "./pages/Sermons";
 import Events from "./pages/Events";
 import News from "./pages/News";
