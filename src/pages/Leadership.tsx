@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import placeholder from "/placeholder.svg";
+
+const placeholder = "/placeholder.svg";
 
 const pastors = [
   {
